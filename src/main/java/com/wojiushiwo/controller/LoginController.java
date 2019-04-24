@@ -12,6 +12,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
 /**
  * Created by 我就是我
  * 2019/4/21 下午7:58
@@ -31,7 +34,7 @@ public class LoginController {
 
     @RequestMapping("/do_login")
     @ResponseBody
-    public Result<Boolean> doLogin(LoginVo loginVo) {
+    public Result<Boolean> doLogin(@Valid LoginVo loginVo, HttpServletResponse response) {
         if (loginVo == null) {
             return Result.error(CodeMsg.SERVER_ERROR);
         }
@@ -47,7 +50,7 @@ public class LoginController {
         if (!ValidatorUtil.isMobile(mobile)) {
             return Result.error(CodeMsg.MOBILE_ERROR);
         }
-        CodeMsg codeMsg = miaoShaUserService.login(loginVo);
+        CodeMsg codeMsg = miaoShaUserService.login(loginVo, response);
         if (codeMsg.getCode() != 0) {
             return Result.error(codeMsg);
         } else {
