@@ -1,7 +1,5 @@
-
-
-```sql
 -- 秒杀demo user表
+```sql
 CREATE TABLE `miaosha_user` (
   `id` bigint(20) NOT NULL COMMENT '用户ID，手机号码',
   `nickname` varchar(255) NOT NULL,
@@ -51,7 +49,7 @@ CREATE TABLE `miaosha_goods` (
   `start_date` datetime DEFAULT NULL COMMENT '秒杀开始时间',
   `end_date` datetime DEFAULT NULL COMMENT '秒杀结束时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 ```
 -- 商品表
 ```sql
@@ -64,5 +62,5 @@ CREATE TABLE `goods` (
   `goods_price` decimal(10,2) DEFAULT '0.00' COMMENT '商品单价',
   `goods_stock` int(11) DEFAULT '0' COMMENT '商品库存,-1表示没有限制',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 ```
